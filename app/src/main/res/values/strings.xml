@@ -4,6 +4,12 @@
     <string name="btn">转换为华氏温度</string>
     <string name="newT">结果为：</string>
     <string name="hb">happy birthday</string>
+    <string name="teamName">TeamA</string>
+    <string name="score">0</string>
+    <string name="btn1">+1分</string>
+    <string name="btn2">+2分</string>
+    <string name="btn3">+3分</string>
+    <string name="reset">reset</string>
     <string name="action_settings" translatable="false">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>

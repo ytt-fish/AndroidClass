@@ -5,5 +5,11 @@
     <string name="from" translatable="false">来自</string>
     <string name="btn">转换为华氏温度</string>
     <string name="newT">结果为</string>
+    <string name="teamName">A队伍</string>
+    <string name="score">0</string>
+    <string name="btn1">+1</string>
+    <string name="btn2">+2</string>
+    <string name="btn3">+3</string>
+    <string name="reset">重置</string>
 
 </resources>
