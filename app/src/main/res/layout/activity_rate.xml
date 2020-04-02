@@ -57,10 +57,10 @@
         android:text="@string/rate_won"/>
 
     <Button
-        android:id="@+id/btn_intent"
+        android:id="@+id/btn_openCfg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_intent"
-        android:onClick="openOne"/>
+        android:onClick="openOne"
+        android:text="@string/btn_opencfg" />
 
 </LinearLayout>

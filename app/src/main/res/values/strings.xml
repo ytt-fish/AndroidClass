@@ -18,10 +18,14 @@
     <string name="previous" translatable="false">Previous</string>
     <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
-    <string name="editText_rate">输入金额</string>
-    <string name="rate_show">转换后的金额为：</string>
-    <string name="rate_dollar">美元</string>
-    <string name="rate_won">韩元</string>
-    <string name="rate_euro">欧元</string>
-    <string name="btn_intent">转换到其他页面</string>
+    <string name="editText_rate" translatable="false">输入金额</string>
+    <string name="rate_show" translatable="false">转换后的金额为：</string>
+    <string name="rate_dollar" translatable="false">美元</string>
+    <string name="rate_won" translatable="false">韩元</string>
+    <string name="rate_euro" translatable="false">欧元</string>
+    <string name="btn_opencfg" translatable="false">Config</string>
+    <string name="btn_save_label">save</string>
+    <string name="dollar_rate">dollar_rate</string>
+    <string name="euro_rate">euro_rate</string>
+    <string name="won_rate">won_rate</string>
 </resources>
