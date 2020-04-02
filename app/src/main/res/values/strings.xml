@@ -23,4 +23,5 @@
     <string name="rate_dollar">美元</string>
     <string name="rate_won">韩元</string>
     <string name="rate_euro">欧元</string>
+    <string name="btn_intent">转换到其他页面</string>
 </resources>

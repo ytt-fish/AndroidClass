@@ -2,7 +2,10 @@ package com.example.androidclass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,5 +42,15 @@ public class RateActivity extends AppCompatActivity {
             d = r * 500;
         }
         show.setText(String.valueOf(d));
+    }
+
+    public void openOne(View btn){
+        //打开一个页面activity
+        Log.i("open","openOne");
+        Intent hello=new Intent(this,ScoreActivity.class);
+        Intent web=new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.jd.com"));
+        Intent dial=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:15928985495"));
+        startActivity(dial);
+
     }
 }
