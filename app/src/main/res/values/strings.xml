@@ -18,4 +18,9 @@
     <string name="previous" translatable="false">Previous</string>
     <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+    <string name="editText_rate">输入金额</string>
+    <string name="rate_show">转换后的金额为：</string>
+    <string name="rate_dollar">美元</string>
+    <string name="rate_won">韩元</string>
+    <string name="rate_euro">欧元</string>
 </resources>
