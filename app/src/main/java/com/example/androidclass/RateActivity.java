@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RateActivity extends AppCompatActivity {
@@ -67,7 +68,24 @@ public class RateActivity extends AppCompatActivity {
         Log.i(TAG,"openOne:dollarRate"+dollarRate);
         Log.i(TAG,"openOne:euroRate"+euroRate);
         Log.i(TAG,"openOne:wonRate"+wonRate);
-        startActivity(config);
+        startActivityForResult(config,1);
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode==1&&resultCode==2){
+            Bundle bdl=data.getExtras();
+            dollarRate=bdl.getFloat("key_dollar",0.1f);
+            euroRate=bdl.getFloat("key_euro",0.1f);
+            wonRate=bdl.getFloat("key_won",0.1f);
+
+            Log.i(TAG,"onActivityResult:"+dollarRate);
+            Log.i(TAG,"onActivityResult:"+euroRate);
+            Log.i(TAG,"onActivityResult:"+wonRate);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
 }
