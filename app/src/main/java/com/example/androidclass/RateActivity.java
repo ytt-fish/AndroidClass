@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,16 +64,41 @@ public class RateActivity extends AppCompatActivity {
 //        Intent dial=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:15928985495"));
 //        startActivity(dial);
 
-        Intent config=new Intent(this,ConfigActivity.class);
-        config.putExtra("dollar_rate_key",dollarRate);
-        config.putExtra("euro_rate_key",euroRate);
-        config.putExtra("won_rate_key",wonRate);
+        openConfig();
 
-        Log.i(TAG,"openOne:dollarRate"+dollarRate);
-        Log.i(TAG,"openOne:euroRate"+euroRate);
-        Log.i(TAG,"openOne:wonRate"+wonRate);
-        startActivityForResult(config,1);
+    }
 
+    private void openConfig() {
+        //提取成方法
+        Intent config = new Intent(this, ConfigActivity.class);
+        config.putExtra("dollar_rate_key", dollarRate);
+        config.putExtra("euro_rate_key", euroRate);
+        config.putExtra("won_rate_key", wonRate);
+
+        Log.i(TAG, "openOne:dollarRate" + dollarRate);
+        Log.i(TAG, "openOne:euroRate" + euroRate);
+        Log.i(TAG, "openOne:wonRate" + wonRate);
+        startActivityForResult(config, 1);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //资源填充器，将资源加载出来
+        getMenuInflater().inflate(R.menu.rate,menu);
+        //返回真，则当前activity有菜单项，false则没有
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.menu_set){
+            //提取的方法
+            openConfig();
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

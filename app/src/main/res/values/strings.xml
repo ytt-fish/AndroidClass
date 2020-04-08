@@ -24,8 +24,9 @@
     <string name="rate_won" translatable="false">韩元</string>
     <string name="rate_euro" translatable="false">欧元</string>
     <string name="btn_opencfg" translatable="false">Config</string>
-    <string name="btn_save_label">save</string>
-    <string name="dollar_rate">dollar_rate</string>
-    <string name="euro_rate">euro_rate</string>
-    <string name="won_rate">won_rate</string>
+    <string name="btn_save_label" translatable="false">save</string>
+    <string name="dollar_rate" translatable="false">dollar_rate</string>
+    <string name="euro_rate" translatable="false">euro_rate</string>
+    <string name="won_rate" translatable="false">won_rate</string>
+    <string name="item" translatable="false">Item</string>
 </resources>
