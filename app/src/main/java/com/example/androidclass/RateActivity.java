@@ -1,10 +1,13 @@
 package com.example.androidclass;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -18,16 +21,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RateActivity extends AppCompatActivity {
+public class RateActivity extends AppCompatActivity implements Runnable
+{
 
     EditText inp;
     TextView show;
+    //使用handler
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==5){
+                String str= (String) msg.obj;
+                Log.i(TAG,"handle Message+"+str);
+                show.setText(str);
+            }
+            super.handleMessage(msg);
+        }
+    };
 
     private float dollarRate=0.1f;
     private float euroRate=0.2f;
     private float wonRate=0.3f;
     private final String TAG="Rate";
 
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +60,10 @@ public class RateActivity extends AppCompatActivity {
         Log.i(TAG,"onCreate:dollarRate"+dollarRate);
         Log.i(TAG,"onCreate:euroRate"+euroRate);
         Log.i(TAG,"onCreate:wonRate"+wonRate);
+
+        //开启子线程
+        Thread t=new Thread(this);
+        t.start();
     }
 
     public void onclick(View btn){
@@ -100,7 +121,6 @@ public class RateActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menu_set){
@@ -146,4 +166,22 @@ public class RateActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void run() {
+        Log.i(TAG,"run:run()....");
+        //演示运行
+        for(int i=1;i<6;i++){
+            Log.i(TAG,"run:i="+i);
+            try{
+                Thread.sleep(2000);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+        //获取msg对象，用于返回主线程
+        Message msg=handler.obtainMessage(5);
+        msg.obj="Hello from run()";
+        handler.sendMessage(msg);
+
+    }
 }
