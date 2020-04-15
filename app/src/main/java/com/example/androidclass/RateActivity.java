@@ -21,23 +21,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static java.lang.System.in;
+
 public class RateActivity extends AppCompatActivity implements Runnable
 {
 
     EditText inp;
     TextView show;
-    //使用handler
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg){
-            if(msg.what==5){
-                String str= (String) msg.obj;
-                Log.i(TAG,"handle Message+"+str);
-                show.setText(str);
-            }
-            super.handleMessage(msg);
-        }
-    };
+    Handler handler;
 
     private float dollarRate=0.1f;
     private float euroRate=0.2f;
@@ -64,6 +63,20 @@ public class RateActivity extends AppCompatActivity implements Runnable
         //开启子线程
         Thread t=new Thread(this);
         t.start();
+
+        //使用handler
+        handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                if(msg.what==5){
+                    String str= (String) msg.obj;
+                    Log.i(TAG,"handle Message+"+str);
+                    show.setText(str);
+                }
+                super.handleMessage(msg);
+            }
+        };
+
     }
 
     public void onclick(View btn){
@@ -183,5 +196,33 @@ public class RateActivity extends AppCompatActivity implements Runnable
         msg.obj="Hello from run()";
         handler.sendMessage(msg);
 
+        //获取网络数据
+        try {
+            URL url = new URL("http://www.usd-cny.com/bankofchina.htm");
+            HttpURLConnection http= (HttpURLConnection) url.openConnection();
+            InputStream in=http.getInputStream();
+            String html=inputStream2String(in);
+            Log.i(TAG,"run:html="+html);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String inputStream2String(InputStream inputStream) throws IOException{
+        final int bufferSize=1024;
+        final char[] buffer=new char[bufferSize];
+        final StringBuffer out=new StringBuffer();
+        Reader in =new InputStreamReader(inputStream,"gb2312");
+        for( ; ; ){
+            int rsz=in.read(buffer,0,buffer.length);
+            if(rsz<0){
+                break;
+            }
+            out.append(buffer,0,rsz);
+        }
+        return out.toString();
     }
 }
