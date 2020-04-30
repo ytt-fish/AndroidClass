@@ -42,9 +42,10 @@ public class RateActivity extends AppCompatActivity implements Runnable
     private float dollarRate=0.1f;
     private float euroRate=0.2f;
     private float wonRate=0.3f;
+    private String updateDate="";
     private final String TAG="RateActivity";
-    public volatile boolean exit=false;
-    String todayTime;
+
+
 
     @SuppressLint("HandlerLeak")
     @Override
@@ -62,16 +63,31 @@ public class RateActivity extends AppCompatActivity implements Runnable
         dollarRate= sharedPreferences.getFloat("dollar_rate",0.0f);
         euroRate=sharedPreferences.getFloat("euro_rate",0.0f);
         wonRate=sharedPreferences.getFloat("won_rate",0.0f);
+        updateDate=sharedPreferences.getString("update_date","");
+
+        //获取当前系统时间
+        Date today=Calendar.getInstance().getTime();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        final String todayStr=sdf.format(today);
+
+
         Log.i(TAG,"onCreate:sp:dollar"+dollarRate);
         Log.i(TAG,"onCreate:sp:euro"+euroRate);
         Log.i(TAG,"onCreate:sp:won"+wonRate);
+        Log.i(TAG,"onCreate:update"+updateDate);
+        Log.i(TAG,"onCreate:todaystr"+todayStr);
 
 
-        //开启子线程，访问网络资源一定不能在主线程中，当前对象，会寻找run方法
-        Thread t=new Thread(this);
-        t.start();
-        //判断exit的值,如果不是首次登陆，exit=true.否则等于false
-        isTodayFirstLogin();
+        //判断时间
+        if(!todayStr.equals(updateDate)){
+            Log.i(TAG,"onCreate:需要更新");
+
+            //开启子线程，访问网络资源一定不能在主线程中，当前对象，会寻找run方法
+            Thread t=new Thread(this);
+            t.start();
+        }else{
+            Log.i(TAG,"onCreate:不需要更新");
+        }
 
         //使用handler，可以在msg中存放信息
         handler=new Handler(){
@@ -89,6 +105,17 @@ public class RateActivity extends AppCompatActivity implements Runnable
                     Log.i(TAG,"onCreate:euro:"+euroRate);
                     Log.i(TAG,"onCreate:won:"+wonRate);
 
+                    //保存更新的日期
+                    //获得对象,一个app可以有多个文件
+                    SharedPreferences sharedPreferences=getSharedPreferences("myrate",Activity.MODE_PRIVATE);
+                    //获得editor对象,将新的数据保存在配置文件中
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString("update_date",todayStr);
+                    editor.putFloat("dollar_rate",dollarRate);
+                    editor.putFloat("euro_rate",euroRate);
+                    editor.putFloat("won_rate",wonRate);
+                    editor.apply();
+
                     Toast.makeText(RateActivity.this,"汇率已更新",Toast.LENGTH_LONG).show();
                 }
                 super.handleMessage(msg);
@@ -96,28 +123,8 @@ public class RateActivity extends AppCompatActivity implements Runnable
         };
 
     }
-    //判断是否首次登陆
-    private boolean isTodayFirstLogin(){
-        SharedPreferences sharedPreferences=getSharedPreferences("myrate",MODE_PRIVATE);
-        String lastTime=sharedPreferences.getString("LoginTime","2020-01-01");
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-        todayTime = df.format(new Date());
-        Log.i(TAG,"isTodayFirstLogin:todayTime"+todayTime);
-        Log.i(TAG,"isTodayFirstLogin:lastTime"+lastTime);
-        if(lastTime.equals(todayTime)){
-            return true;
-        }
-        else{
-            return false;
 
-        }
-    }
-    //保存退出时间
-    private void saveExitTime(String exitLoginTime){
-        SharedPreferences.Editor editor=getSharedPreferences("myrate",MODE_PRIVATE).edit();
-        editor.putString("LoginTime",exitLoginTime);
-        editor.apply();
-    }
+
 
     @Override
     protected void onStart() {
@@ -150,7 +157,7 @@ public class RateActivity extends AppCompatActivity implements Runnable
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy: ");
-        saveExitTime(todayTime);
+
     }
 
     //处理输入金额及显示
@@ -258,9 +265,6 @@ public class RateActivity extends AppCompatActivity implements Runnable
     @Override
     //子线程中需要实现的代码，runnable接口指定的方法
     public void run() {
-        if(isTodayFirstLogin()==exit) {
-            SharedPreferences sp=getSharedPreferences("myrate",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sp.edit();
             Log.i(TAG, "run:run()....");
             //演示运行，当前停止几秒钟
             for (int i = 1; i < 3; i++) {
@@ -271,6 +275,7 @@ public class RateActivity extends AppCompatActivity implements Runnable
                     e.printStackTrace();
                 }
             }
+          Bundle bundle;
 //        msg.obj="Hello from run()";
 //        handler.sendMessage(msg);
             //获取网络数据
@@ -288,52 +293,53 @@ public class RateActivity extends AppCompatActivity implements Runnable
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-            Document doc = null;
-            //用于保存获取的汇率
-            Bundle bundle = new Bundle();
-            //取出一个msg对象，用于返回主线程，还需填内容，what标记当前message的属性，接受时进行比对
-            Message msg = handler.obtainMessage(5);
-            try {
-                doc = Jsoup.connect("http://www.usd-cny.com/bankofchina.htm").get();
-                Log.i(TAG, "run:" + doc.title());
-                Elements tables = doc.getElementsByTag("table");
+        bundle=getFromBoc();
+        //取出一个msg对象，用于返回主线程，还需填内容，what标记当前message的属性，接受时进行比对
+        Message msg = handler.obtainMessage(5);
+        //填写msg对象的内容
+        msg.obj = bundle;
+        //传回主线程
+        handler.sendMessage(msg);
+    }
+
+    private Bundle getFromBoc() {
+        Bundle bundle=new Bundle();
+        Document doc = null;
+        //用于保存获取的汇率
+        try {
+            doc = Jsoup.connect("http://www.usd-cny.com/bankofchina.htm").get();
+            Log.i(TAG, "run:" + doc.title());
+            Elements tables = doc.getElementsByTag("table");
 //            int i=1;
 //            for(Element table:tables) {
 //                Log.i(TAG, "run:table["+i+"]" + table);
 //                i++;
 //            }
-                Element table1 = tables.get(0);
+            Element table1 = tables.get(0);
 //            Log.i(TAG,"run:tables"+table1);
-                //获取TD中的元素
-                Elements tds = table1.getElementsByTag("td");
-                for (int i = 0; i < tds.size(); i += 6) {
-                    Element td1 = tds.get(i);
-                    Element td2 = tds.get(i + 5);
-                    Log.i(TAG, "run:" + td1.text() + "==>" + td2.text());
-                    String str1 = td1.text();
-                    String val = td2.text();
-                    if ("美元".equals(str1)) {
-                        bundle.putFloat("dollar-rate", 100f / Float.parseFloat(val));
-                        editor.putFloat("dollar_rate",100f / Float.parseFloat(val));
-                    } else if ("欧元".equals(str1)) {
-                        bundle.putFloat("euro-rate", 100f / Float.parseFloat(val));
-                        editor.putFloat("euro-rate", 100f / Float.parseFloat(val));
-                    } else if ("韩元".equals(str1)) {
-                        bundle.putFloat("won-rate", 100f / Float.parseFloat(val));
-                        editor.putFloat("won-rate", 100f / Float.parseFloat(val));
-                    }
+            //获取TD中的元素
+            Elements tds = table1.getElementsByTag("td");
+            for (int i = 0; i < tds.size(); i += 6) {
+                Element td1 = tds.get(i);
+                Element td2 = tds.get(i + 5);
+                Log.i(TAG, "run:" + td1.text() + "==>" + td2.text());
+                String str1 = td1.text();
+                String val = td2.text();
+                if ("美元".equals(str1)) {
+                    bundle.putFloat("dollar-rate", 100f / Float.parseFloat(val));
+                } else if ("欧元".equals(str1)) {
+                    bundle.putFloat("euro-rate", 100f / Float.parseFloat(val));
+                } else if ("韩元".equals(str1)) {
+                    bundle.putFloat("won-rate", 100f / Float.parseFloat(val));
                 }
+            }
 //            for(Element td:tds){
 //                Log.i(TAG, "run:td:" + td);
 //            }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            //填写msg对象的内容
-            msg.obj = bundle;
-            //传回主线程
-            handler.sendMessage(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return bundle;
     }
 
 
