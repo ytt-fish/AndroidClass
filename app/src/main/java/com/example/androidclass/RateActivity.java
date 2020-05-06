@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -211,20 +212,23 @@ public class RateActivity extends AppCompatActivity implements Runnable
         startActivityForResult(config, 1);
     }
 
-//   @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        //资源填充器，将资源加载出来
-//        getMenuInflater().inflate(R.menu.rate,menu);
-//        //返回真，则当前activity有菜单项，false则没有
-//        return true;
-//    }
+   @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //资源填充器，将资源加载出来
+        getMenuInflater().inflate(R.menu.rate,menu);
+        //返回真，则当前activity有菜单项，false则没有
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menu_set){
             //提取的方法
             openConfig();
-
+        }else if(item.getItemId()==R.id.open_list){
+            //打开列表窗口
+            Intent list = new Intent(this, RateListActivity.class);
+            startActivity(list);
         }
 
         return super.onOptionsItemSelected(item);

@@ -29,4 +29,5 @@
     <string name="euro_rate" translatable="false">euro_rate</string>
     <string name="won_rate" translatable="false">won_rate</string>
     <string name="item" translatable="false">Item</string>
+    <string name="label_open_list">OpenList</string>
 </resources>
