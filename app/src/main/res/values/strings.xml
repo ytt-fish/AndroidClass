@@ -30,4 +30,7 @@
     <string name="won_rate" translatable="false">won_rate</string>
     <string name="item" translatable="false">Item</string>
     <string name="label_open_list">OpenList</string>
+    <string name="keywords">输入关键字</string>
+    <string name="result">搜索结果</string>
+    <string name="search">search</string>
 </resources>

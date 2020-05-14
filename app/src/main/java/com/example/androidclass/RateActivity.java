@@ -48,6 +48,7 @@ public class RateActivity extends AppCompatActivity implements Runnable
 
 
 
+
     @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +152,6 @@ public class RateActivity extends AppCompatActivity implements Runnable
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop: ");
-        //保存更新的日期
 
     }
     @Override
@@ -312,7 +312,7 @@ public class RateActivity extends AppCompatActivity implements Runnable
         //用于保存获取的汇率
         try {
             doc = Jsoup.connect("http://www.usd-cny.com/bankofchina.htm").get();
-            Log.i(TAG, "run:" + doc.title());
+            //Log.i(TAG, "run:" + doc.title());
             Elements tables = doc.getElementsByTag("table");
 //            int i=1;
 //            for(Element table:tables) {

@@ -1,7 +1,9 @@
 package com.example.androidclass;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,9 +12,12 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -31,17 +36,19 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
     private  int msgWhat=7;
     private  final  String TAG="MyList2Activity";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initListView();
 
         //MyAdapter myAdapter=new MyAdapter(this,R.layout.list_item,listItems);
         //this.setListAdapter(myAdapter);
         this.setListAdapter(listItemAdapter);
 
-        Thread t = new Thread(this);
-        t.start();
+
 
 
         handler = new Handler() {
@@ -54,6 +61,8 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
                             R.layout.list_item,//listItem的xml布局实现
                             new String[]{"ItemTitle","ItemDetail"},//放到布局的控件中，一一匹配的关系
                             new int[]{R.id.itemTitle,R.id.itemDetail});
+
+
                 }
                 setListAdapter(listItemAdapter);
             }
@@ -112,6 +121,7 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         handler.sendMessage(msg);
 
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

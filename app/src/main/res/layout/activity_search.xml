@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MyList2Activity">
+    tools:context=".SearchActivity">
 
     <EditText
         android:id="@+id/keywords"
@@ -16,16 +16,17 @@
         android:layout_height="wrap_content"
         android:autofillHints="" />
 
-    <TextView
-        android:id="@+id/itemTitle"
-        android:layout_width="fill_parent"
+    <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textSize="25sp"/>
-    <TextView
-        android:id="@+id/itemDetail"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:onClick="onclick"
+        android:text="@string/search" />
+
+
+    <ListView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
