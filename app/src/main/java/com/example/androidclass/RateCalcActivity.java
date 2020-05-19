@@ -18,8 +18,8 @@ public class RateCalcActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_calc);
-        String title=getIntent().getStringExtra("title");
-        getIntent().getFloatExtra("rate",0f);
+        final String title=getIntent().getStringExtra("title");
+        rate=getIntent().getFloatExtra("rate",0f);
         Log.i(TAG,"onCreate:title="+title);
         Log.i(TAG,"onCreate:rate="+rate);
         ((TextView)findViewById(R.id.title2)).setText(title);
@@ -40,7 +40,7 @@ public class RateCalcActivity extends AppCompatActivity {
                 TextView show=RateCalcActivity.this.findViewById(R.id.show2);
                 if(s.length()>0){
                     float val=Float.parseFloat(s.toString());
-                    show.setText(val+"RMB==>"+(100/rate*val));
+                    show.setText(val+"RMB==>"+(100/rate*val)+title);
                 }else {
                     show.setText("");
                 }

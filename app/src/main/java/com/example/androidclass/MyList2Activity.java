@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener {
+public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
     Handler handler;
     private ArrayList<HashMap<String,String>>listItems;//存放文字，图片信息
     private SimpleAdapter listItemAdapter;//适配器
@@ -41,15 +41,14 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initListView();
-
         //MyAdapter myAdapter=new MyAdapter(this,R.layout.list_item,listItems);
         //this.setListAdapter(myAdapter);
         this.setListAdapter(listItemAdapter);
 
-
-
+        //开启子线程，访问网络资源一定不能在主线程中，当前对象，会寻找run方法
+        Thread t=new Thread(this);
+        t.start();
 
         handler = new Handler() {
             @Override
@@ -68,7 +67,8 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
             }
         };
         //获取控件,点击事件的监听
-        getListView().setOnItemClickListener( this);
+        getListView().setOnItemClickListener(this);
+        getListView().setOnItemLongClickListener(this);
     }
 
     private  void initListView(){
@@ -76,7 +76,7 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         for(int i=0;i<10;i++){
             HashMap<String,String> map=new HashMap<String, String>();//创建一个对象，向里面放数据
             map.put("ItemTitle","Rate:"+i);//标题文字，key不能重复
-            map.put("ItemDetail","detail"+i);//详情描述
+            map.put("ItemDetail",""+i);//详情描述
             listItems.add(map);//加入数据
         }
         //生成适配器的item和动态数组相对应的元素
@@ -150,5 +150,11 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         rateCalc.putExtra("rate",Float.parseFloat(detailStr));
         startActivity(rateCalc);
 
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.i(TAG,"onItemLongclick:长按："+position);
+        return false;
     }
 }
