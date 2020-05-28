@@ -168,9 +168,10 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
                 Log.i(TAG,"onClick:对话框事件处理：");
                 listItems.remove(position);
                 listItemAdapter.notifyDataSetChanged();
-                Log.i(TAG,"onItemLongclick:删除："+listItems.size());
             }
         }).setNegativeButton("否",null);
-        return false;
+        builder.create().show();
+        Log.i(TAG,"onItemLongclick:删除："+listItems.size());
+        return true;
     }
 }
