@@ -32,6 +32,7 @@ import java.io.Reader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class RateActivity extends AppCompatActivity implements Runnable
 {
@@ -227,15 +228,23 @@ public class RateActivity extends AppCompatActivity implements Runnable
             openConfig();
         }else if(item.getItemId()==R.id.open_list){
             //打开列表窗口
-            Intent list = new Intent(this, MyList2Activity.class);
+            Intent list = new Intent(this, RateListActivity.class);
             startActivity(list);
+            //测试数据库
+//            RateItem item1=new RateItem("aaa","123");
+//            RateManager manager = new RateManager(this);
+//            manager.add(item1);
+//            manager.add(new RateItem("bbb","234"));
+//            Log.i(TAG,"onOptionsItemSelected:写入数据库");
+//
+//            //查询所有数据
+//            List<RateItem> testList=manager.listAll();
+//            for(RateItem i:testList){
+//                Log.i(TAG,"onOptionsItemSelected:取出数据[ids:"+i.getId()+"]names:"+i.getCurName()+"rate:"+i.getCurRate());
         }
-
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    //打开一个窗口分配一个requestCode，区分哪一个窗口返回的数据，resultCode区分是什么类型的数据,怎么去拆分,
+        @Override   //打开一个窗口分配一个requestCode，区分哪一个窗口返回的数据，resultCode区分是什么类型的数据,怎么去拆分,
     //系统会自己调用这个方法
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         //将新设置的汇率写到sp里
