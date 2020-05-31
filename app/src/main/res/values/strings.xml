@@ -33,4 +33,7 @@
     <string name="keywords">输入关键字</string>
     <string name="result">搜索结果</string>
     <string name="search">search</string>
+    <string name="home_btn1">常见植物介绍</string>
+    <string name="home_btn2">科学知识</string>
+    <string name="home_btn3">科学养护</string>
 </resources>

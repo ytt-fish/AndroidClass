@@ -12,7 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RateCalcActivity" android:theme="@style/Theme.AppCompat.Dialog">
+        <activity android:name=".PlantListActivity"></activity>
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RateCalcActivity"
+            android:theme="@style/Theme.AppCompat.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +30,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MyAdapter" />
-        <activity android:name=".MyList2Activity">
-
-        </activity>
-        <activity android:name=".MyLitst">
-
-        </activity>
+        <activity android:name=".MyList2Activity" />
+        <activity android:name=".MyLitst" />
         <activity android:name=".RateListActivity" />
         <activity android:name=".ConfigActivity" />
         <activity android:name=".RateActivity">

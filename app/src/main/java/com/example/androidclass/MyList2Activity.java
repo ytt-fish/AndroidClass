@@ -62,8 +62,6 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
                             R.layout.list_item,//listItem的xml布局实现
                             new String[]{"ItemTitle","ItemDetail"},//放到布局的控件中，一一匹配的关系
                             new int[]{R.id.itemTitle,R.id.itemDetail});
-
-
                 }
                 setListAdapter(listItemAdapter);
             }

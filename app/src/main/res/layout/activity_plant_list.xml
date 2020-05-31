@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlantListActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/design_default_color_secondary_variant"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/plant_list_flush"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-12dp"
+            android:src="@mipmap/list_flush"
+            android:contentDescription="TODO"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-12dp" />
+
+        <ImageView
+            android:id="@+id/plant_list_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="-49dp"
+            android:layout_toLeftOf="@id/plant_list_flush"
+            android:src="@mipmap/list_clear"
+            android:contentDescription="TODO"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="-49dp"
+            android:layout_toStartOf="@id/plant_list_flush" />
+
+        <EditText
+            android:id="@+id/plant_key_search"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="-42dp"
+            android:layout_marginRight="-42dp"
+            android:layout_toStartOf="@+id/plant_list_search"
+            android:layout_toLeftOf="@+id/plant_list_search"
+            android:textColor="@color/design_default_color_background"
+            android:inputType="text" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/plant_list_LV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="2dp"/>
+</LinearLayout>
