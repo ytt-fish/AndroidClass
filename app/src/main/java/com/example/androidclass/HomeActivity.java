@@ -2,6 +2,7 @@ package com.example.androidclass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,7 +17,8 @@ public class HomeActivity extends AppCompatActivity {
     public void onClick_home(View view) {
         switch (view.getId()){
             case R.id.home_btn1:
-
+                Intent intent=new Intent(this,PlantListActivity.class);
+                startActivity(intent);
                 break;
             case R.id.home_btn2:
 
