@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package plant_list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.androidclass.R;
 
 import org.jsoup.internal.StringUtil;
 
@@ -37,8 +39,6 @@ public class PlantListActivity extends AppCompatActivity implements AdapterView.
         searchI.setOnClickListener(this);
         flushI=findViewById(R.id.plant_list_flush);
         flushI.setOnClickListener(this);
-
-        String searchKey= String.valueOf(key.getText());
 
         listItems=new ArrayList<HashMap<String, String>>();
         for(int i=0;i<plantN.length;i++) {
@@ -72,22 +72,33 @@ public class PlantListActivity extends AppCompatActivity implements AdapterView.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.plant_list_search:
+                //获取输入内容，判断是否为空
                 String msg=key.getText().toString().trim();
                 if(StringUtil.isBlank(msg)){
                     Toast.makeText(this,"输入内容不能为空",Toast.LENGTH_LONG);
                     return;
                 }
+                //判断是否包含
                 List<HashMap<String,String>> listItems1=new ArrayList<HashMap<String, String>>();
                 for(int i=0;i<listItems.size();i++){
                     String name=listItems.get(i).get("PlantName");
                     if(name.contains(msg)){
                         listItems1.add(listItems.get(i));
                     }
-
                 }
-
+                listItems.clear();
+                listItems.addAll(listItems1);
+                listItemAdapter.notifyDataSetChanged();
                 break;
             case R.id.plant_list_flush:
+                listItems.clear();
+                for(int i=0;i<plantN.length;i++) {
+                    HashMap<String, String> map = new HashMap<String, String>();//创建一个对象，向里面放数据
+                    map.put("PlantName", plantN[i]);//标题文字，key不能重复
+                    map.put("PlantDetail", plantD[i]);//详情描述
+                    listItems.add(map);//加入数据
+                }
+                listItemAdapter.notifyDataSetChanged();
                 break;
         }
 

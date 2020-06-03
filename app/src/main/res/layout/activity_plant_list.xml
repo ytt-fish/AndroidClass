@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlantListActivity"
+    tools:context="plant_list.PlantListActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -47,7 +47,7 @@
             android:layout_toStartOf="@+id/plant_list_search"
             android:layout_toLeftOf="@+id/plant_list_search"
             android:textColor="@color/design_default_color_background"
-            android:inputType="text"
+
             android:autofillHints="@string/search" />
     </RelativeLayout>
 
