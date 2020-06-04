@@ -21,7 +21,8 @@
                 android:text="@string/plant_des_back"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp" />
+                android:layout_marginStart="10dp"
+                android:onClick="onClick_back"/>
 
             <TextView
                 android:id="@+id/plant_des_title"

@@ -2,6 +2,7 @@ package plant_list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.example.androidclass.PlantDesActivity;
 import com.example.androidclass.R;
 
 import org.jsoup.internal.StringUtil;
@@ -66,6 +68,16 @@ public class PlantListActivity extends AppCompatActivity implements AdapterView.
         Log.i(TAG,"onItemClick:view:"+view);
         Log.i(TAG,"onClickItem:position"+position);
         Log.i(TAG,"onClickItem:id"+id);
+
+        ListView listView = findViewById(R.id.plant_list_LV);
+        HashMap<String,String> map= (HashMap<String, String>) listView.getItemAtPosition(position);
+        String nameStr=map.get("PlantName");
+        Log.i(TAG,"onItemClick:titleStr"+nameStr);
+
+        Intent plantDes=new Intent(this, PlantDesActivity.class);
+        plantDes.putExtra("position",position);
+        plantDes.putExtra("nameStr",nameStr);
+        startActivity(plantDes);
     }
 
     @Override
