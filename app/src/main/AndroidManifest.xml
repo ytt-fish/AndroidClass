@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PlantDesActivity"></activity>
+        <activity android:name="ViewPager.Main2Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PlantDesActivity" />
         <activity android:name="plant_list.PlantListActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>

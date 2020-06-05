@@ -38,4 +38,7 @@
     <string name="home_btn3">科学养护</string>
     <string name="plant_des_back">返回</string>
     <string name="plant_menu_grid">GridView视图</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
