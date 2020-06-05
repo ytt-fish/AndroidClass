@@ -1,7 +1,4 @@
-package com.example.androidclass;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.androidclass.classtraining;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;

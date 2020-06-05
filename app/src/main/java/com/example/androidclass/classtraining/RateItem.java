@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package com.example.androidclass.classtraining;
 
 public class RateItem {
     private int id;

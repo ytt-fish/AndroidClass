@@ -1,4 +1,4 @@
-package plant_list;
+package com.example.androidclass.plant_list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,9 +25,9 @@ import java.util.List;
 public class PlantListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
     private List<HashMap<String,String>> listItems;//存放文字，图片信息
     private SimpleAdapter listItemAdapter;//适配器
-    String TAG="PlantListActivity";
+    String TAG="PlantlistActivity";
     String[] plantN = new String[] {"蓝雪花", "长寿花"};
-    String[] plantD = new String[] {"30000.00", "1500.00"};
+    String[] plantD = new String[] {"科","ke"};
     EditText key;
     ImageView searchI,flushI;
 

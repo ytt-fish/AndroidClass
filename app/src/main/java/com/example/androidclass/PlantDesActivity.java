@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import plant_list.PlantListActivity;
+import com.example.androidclass.plant_list.PlantListActivity;
 
 public class PlantDesActivity extends AppCompatActivity {
     TextView plantTitle,plantDes;

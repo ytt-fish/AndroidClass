@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package com.example.androidclass.classtraining;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.example.androidclass.R;
 
 import java.util.ArrayList;
 import java.util.List;

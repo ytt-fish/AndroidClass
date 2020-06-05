@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package com.example.androidclass.classtraining;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.androidclass.R;
 
 public class RateCalcActivity extends AppCompatActivity {
     float rate=0f;

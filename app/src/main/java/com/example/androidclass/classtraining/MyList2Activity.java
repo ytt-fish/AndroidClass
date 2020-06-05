@@ -1,25 +1,19 @@
-package com.example.androidclass;
+package com.example.androidclass.classtraining;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.androidclass.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -145,7 +139,7 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         Log.i(TAG,"onItemClick:detail2"+detail2);
 
         //打开新的页面传入参数
-        Intent rateCalc=new Intent(this,RateCalcActivity.class);
+        Intent rateCalc=new Intent(this, RateCalcActivity.class);
         rateCalc.putExtra("title",titleStr);
         rateCalc.putExtra("rate",Float.parseFloat(detailStr));
         startActivity(rateCalc);

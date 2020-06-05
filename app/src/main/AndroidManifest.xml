@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".plant_grid.PlantGridActivity"></activity>
         <activity android:name="ViewPager.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlantDesActivity" />
-        <activity android:name="plant_list.PlantListActivity" />
+        <activity android:name=".plant_list.PlantListActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RateCalcActivity"
+            android:name=".classtraining.RateCalcActivity"
             android:theme="@style/Theme.AppCompat.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,19 +38,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyAdapter" />
-        <activity android:name=".MyList2Activity" />
-        <activity android:name=".MyLitst" />
-        <activity android:name=".RateListActivity" />
-        <activity android:name=".ConfigActivity" />
-        <activity android:name=".RateActivity">
+        <activity android:name=".classtraining.MyAdapter" />
+        <activity android:name=".classtraining.MyList2Activity" />
+        <activity android:name=".classtraining.MyLitst" />
+        <activity android:name=".classtraining.RateListActivity" />
+        <activity android:name=".classtraining.ConfigActivity" />
+        <activity android:name=".classtraining.RateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScoreActivity">
+        <activity android:name=".classtraining.ScoreActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -9,7 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import plant_list.PlantListActivity;
+import com.example.androidclass.R;
+import com.example.androidclass.plant_list.PlantListActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -21,12 +22,15 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.rate,menu);
+        getMenuInflater().inflate(R.menu.plant,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.menu_grid){
+
+        }
         return super.onOptionsItemSelected(item);
     }
 

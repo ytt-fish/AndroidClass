@@ -1,10 +1,12 @@
-package com.example.androidclass;
+package com.example.androidclass.classtraining;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.androidclass.R;
 
 public class ScoreActivity extends AppCompatActivity {
 
