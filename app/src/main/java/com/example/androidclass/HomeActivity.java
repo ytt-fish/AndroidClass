@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.androidclass.R;
+import com.example.androidclass.plant_grid.PlantGridActivity;
 import com.example.androidclass.plant_list.PlantListActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -29,7 +30,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menu_grid){
-
+            Intent grid=new Intent(this, PlantGridActivity.class);
+            startActivity(grid);
         }
         return super.onOptionsItemSelected(item);
     }

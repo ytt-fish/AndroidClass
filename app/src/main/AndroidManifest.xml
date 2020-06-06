@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".plant_grid.PlantGridActivity"></activity>
+        <activity android:name=".PlantKnowActivity"></activity>
+        <activity android:name=".PlantGridDesActivity" />
+        <activity android:name=".plant_grid.PlantGridActivity" />
         <activity android:name="ViewPager.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

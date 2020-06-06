@@ -26,8 +26,8 @@ public class PlantListActivity extends AppCompatActivity implements AdapterView.
     private List<HashMap<String,String>> listItems;//存放文字，图片信息
     private SimpleAdapter listItemAdapter;//适配器
     String TAG="PlantlistActivity";
-    String[] plantN = new String[] {"蓝雪花", "长寿花"};
-    String[] plantD = new String[] {"科","ke"};
+    String[] plantN = new String[] {"蓝雪花", "长寿花","风车茉莉","玛格丽特花","月季花","栀子花","杜鹃","桂花"};
+    String[] plantD = new String[] {"白花丹科","石蒜科","夹竹桃科","菊科","蔷薇科","茜草科","杜鹃花科","木犀科"};
     EditText key;
     ImageView searchI,flushI;
 
