@@ -14,6 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
+
     public DBHelper(Context context){
         super(context,DB_NAME,null,VERSION);
     }

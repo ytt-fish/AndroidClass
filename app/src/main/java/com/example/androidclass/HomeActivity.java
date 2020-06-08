@@ -39,11 +39,12 @@ public class HomeActivity extends AppCompatActivity {
     public void onClick_home(View view) {
         switch (view.getId()){
             case R.id.home_btn1:
-                Intent intent=new Intent(this, PlantListActivity.class);
-                startActivity(intent);
+                Intent intent1=new Intent(this, PlantListActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.home_btn2:
-
+                Intent intent2=new Intent(this, PlantKnowActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.home_btn3:
 
