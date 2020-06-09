@@ -1,10 +1,14 @@
 package com.example.androidclass;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -28,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 public class PlantKnowActivity extends ListActivity implements Runnable, AdapterView.OnItemClickListener {
-    String data[]={"wait...."};
+    String[] data ={"wait...."};
     private String logDate="";
     private  final String DATE_SP_KEY="lastRateDateStr";
     Handler handler;
@@ -63,41 +67,64 @@ public class PlantKnowActivity extends ListActivity implements Runnable, Adapter
             }
         };
         getListView().setOnItemClickListener(this);
-
-
     }
 
     @Override
     public void run() {
+        Log.i(TAG,"run...");
         List<String> plantList=new ArrayList<String>();
         String curDateStr=(new SimpleDateFormat("yyyy-MM-dd")).format(new Date());
         Log.i("run","curDateStr:"+"logDatr:"+logDate);
 
-        Document doc = null;
-
-        try{
-            doc = Jsoup.connect("https://www.zhiwutong.com/science/index.htm").get();
-            Elements tables = doc.getElementsByTag("li");
-            //int i=1;
+        if(curDateStr.equals(logDate)) {
+            //如果时间相等，，则不从网络中获取数据
+            Log.i("run:", "日期相等：从数据库中获取数据");
+            PlantManager manager = new PlantManager(PlantKnowActivity.this);
+            for (PlantItem item : manager.listAll()) {
+                plantList.add(item.getCurTitle());
+            }
+        }else {
+            Log.i("run", "日期不相等：从网络中获取数据");
+            Document doc = null;
+            try {
+                List<PlantItem> plList=new ArrayList<PlantItem>();
+                doc = Jsoup.connect("https://www.zhiwutong.com/science/index.htm").get();
+                Elements tables = doc.getElementsByTag("li");
+                //int i=1;
 //            for(Element table:tables) {
 //                //Log.i(TAG, "run:table["+i+"]" + table);
 //                i++;
 //            }
-            for(int j=35;j<85;j++){
-                Element want=tables.get(j);
-                Log.i(TAG, "run:table["+j+"]" + want);
+                for (int j = 35; j < 85; j++) {
+                    Element want = tables.get(j);
+                    Log.i(TAG, "run:table[" + j + "]" + want);
 
-                String title=want.select("a").text();
-                Log.i(TAG, "run:title["+j+"]" +title);
+                    String title = want.select("a").text();
+                    Log.i(TAG, "run:title[" + j + "]" + title);
 
-                String url=want.select("a").attr("href");
-                Log.i(TAG, "run:url["+j+"]" + url);
+                    String url = want.select("a").attr("href");
+                    Log.i(TAG, "run:url[" + j + "]" + url);
 
-                plantList.add(title);
+                    plantList.add(title);
+                    plList.add(new PlantItem(title,url));
+                }
+
+                //把数据写入到数据库中
+                PlantManager manager=new PlantManager(PlantKnowActivity.this);
+                manager.deleteAll();
+                Log.i("db","删除记录");
+                manager.addAll(plList);
+                Log.i("db","添加新纪录");
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            //更新记录日期
+            SharedPreferences sp=getSharedPreferences("plant",Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit=sp.edit();
+            edit.putString(DATE_SP_KEY,curDateStr);
+            edit.commit();
+            Log.i("run","更新日期结束："+curDateStr);
         }
 
         Message msg = handler.obtainMessage(5);
@@ -108,8 +135,28 @@ public class PlantKnowActivity extends ListActivity implements Runnable, Adapter
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        List<String> pList=new ArrayList<String>();
+        PlantManager manager = new PlantManager(PlantKnowActivity.this);
+        for (PlantItem item : manager.listAll()) {
+            //Log.i(TAG,"url"+"\"https://"+ item.getCurUrl().substring(2)+"\"");
 
+            pList.add("\"https://"+ item.getCurUrl().substring(2)+"\"");
+
+
+        }
+        Log.i(TAG, String.valueOf(pList.size()));
+        Log.i(TAG,"str:"+pList.get(position));
+        //String[] stringArray = pList.toArray(new String[pList.size()]);
+        //Log.i(TAG,"str:"+stringArray);
+        String[] strs ={"https://www.baidu.com","https://www.baidu.com","https://www.baidu.com","https://www.baidu.com”,“https://www.baidu.com"};
+        Uri uri = Uri.parse(strs[position]);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+
+        //Intent web=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.zhiwutong.com/jiaoxue/2008-09/27753.htm"));
+        //startActivity(web);
     }
 }
