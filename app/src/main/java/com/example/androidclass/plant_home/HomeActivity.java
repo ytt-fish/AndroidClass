@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package com.example.androidclass.plant_home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,9 @@ import android.view.View;
 
 import com.example.androidclass.R;
 import com.example.androidclass.plant_grid.PlantGridActivity;
+import com.example.androidclass.plant_know.PlantKnowActivity;
 import com.example.androidclass.plant_list.PlantListActivity;
+import com.example.androidclass.plant_record.PlantRecordActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -47,10 +49,9 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.home_btn3:
-
+                Intent intent3=new Intent(this, PlantRecordActivity.class);
+                startActivity(intent3);
                 break;
-
-
         }
     }
 }

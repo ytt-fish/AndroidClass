@@ -9,11 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.example.androidclass.PlantDesActivity;
-import com.example.androidclass.PlantGridDesActivity;
+import com.example.androidclass.plant_des.PlantGridDesActivity;
 import com.example.androidclass.R;
 
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
-package com.example.androidclass;
+package com.example.androidclass.plant_know;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
 import android.content.Context;
@@ -18,9 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
-import com.example.androidclass.R;
-import com.example.androidclass.plant_list.PlantListActivity;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,6 +26,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.example.androidclass.plant_db.PlantItem;
+import com.example.androidclass.plant_db.PlantManager;
 
 public class PlantKnowActivity extends ListActivity implements Runnable, AdapterView.OnItemClickListener {
     String[] data ={"wait...."};
@@ -112,9 +111,9 @@ public class PlantKnowActivity extends ListActivity implements Runnable, Adapter
                 //把数据写入到数据库中
                 PlantManager manager=new PlantManager(PlantKnowActivity.this);
                 manager.deleteAll();
-                Log.i("db","删除记录");
+                Log.i(TAG,"删除记录");
                 manager.addAll(plList);
-                Log.i("db","添加新纪录");
+                Log.i(TAG,"添加新纪录");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -142,21 +141,10 @@ public class PlantKnowActivity extends ListActivity implements Runnable, Adapter
         PlantManager manager = new PlantManager(PlantKnowActivity.this);
         for (PlantItem item : manager.listAll()) {
             //Log.i(TAG,"url"+"\"https://"+ item.getCurUrl().substring(2)+"\"");
-
-            pList.add("\"https://"+ item.getCurUrl().substring(2)+"\"");
-
-
+            pList.add("https://"+ item.getCurUrl().substring(2));
         }
-        Log.i(TAG, String.valueOf(pList.size()));
-        Log.i(TAG,"str:"+pList.get(position));
-        //String[] stringArray = pList.toArray(new String[pList.size()]);
-        //Log.i(TAG,"str:"+stringArray);
-        String[] strs ={"https://www.baidu.com","https://www.baidu.com","https://www.baidu.com","https://www.baidu.com”,“https://www.baidu.com"};
-        Uri uri = Uri.parse(strs[position]);
+        Uri uri = Uri.parse(pList.get(position));
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
-
-        //Intent web=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.zhiwutong.com/jiaoxue/2008-09/27753.htm"));
-        //startActivity(web);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package com.example.androidclass.plant_db;
 
 public class PlantItem {
     private int id;

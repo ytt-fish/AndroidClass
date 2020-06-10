@@ -29,16 +29,18 @@
     <string name="euro_rate" translatable="false">euro_rate</string>
     <string name="won_rate" translatable="false">won_rate</string>
     <string name="item" translatable="false">Item</string>
-    <string name="label_open_list">OpenList</string>
-    <string name="keywords">输入关键字</string>
-    <string name="result">搜索结果</string>
-    <string name="search">search</string>
-    <string name="home_btn1">常见植物介绍</string>
-    <string name="home_btn2">科学知识</string>
-    <string name="home_btn3">科学养护</string>
-    <string name="plant_des_back">返回</string>
-    <string name="plant_menu_grid">GridView视图</string>
+    <string name="label_open_list" translatable="false">OpenList</string>
+    <string name="keywords" translatable="false">输入关键字</string>
+    <string name="result" translatable="false">搜索结果</string>
+    <string name="search" translatable="false">search</string>
+    <string name="home_btn1" translatable="false">常见植物介绍</string>
+    <string name="home_btn2" translatable="false">科学知识</string>
+    <string name="home_btn3" translatable="false">养护记录</string>
+    <string name="plant_des_back" translatable="false">返回</string>
+    <string name="plant_menu_grid" translatable="false">GridView视图</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="record_title">养护记录</string>
+    <string name="record_btn_add">增加</string>
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.androidclass.plant_record.PlantRecordActivity">
+
+    <TextView
+        android:id="@+id/record_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/design_default_color_secondary_variant"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="@string/record_title" />
+
+    <ListView
+        android:id="@+id/record_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/design_default_color_on_secondary"
+        android:dividerHeight="2dp"
+        android:layout_below="@+id/record_title"/>
+
+    <Button
+        android:id="@+id/record_btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="@string/record_btn_add" />
+
+
+</RelativeLayout>

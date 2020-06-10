@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.androidclass.PlantDesActivity;
+import com.example.androidclass.plant_des.PlantDesActivity;
 import com.example.androidclass.R;
 
 import org.jsoup.internal.StringUtil;

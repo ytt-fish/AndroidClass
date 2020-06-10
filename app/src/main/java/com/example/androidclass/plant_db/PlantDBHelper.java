@@ -1,4 +1,4 @@
-package com.example.androidclass;
+package com.example.androidclass.plant_db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,7 +26,6 @@ public class PlantDBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //TODO Auto-generated method stub
 
     }
 }
