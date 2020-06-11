@@ -12,11 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.androidclass.plant_record.PlantRecordActivity"></activity>
+        <activity android:name=".plant_record.PlantRecordAddActivity"></activity>
+        <activity android:name=".plant_record.PlantRecordActivity" />
         <activity android:name=".plant_know.PlantKnowActivity" />
         <activity android:name=".plant_des.PlantGridDesActivity" />
         <activity android:name=".plant_grid.PlantGridActivity" />
-        <activity android:name="ViewPager.Main2Activity">
+        <activity android:name=".classtraining.ViewPager.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +26,7 @@
         </activity>
         <activity android:name=".plant_des.PlantDesActivity" />
         <activity android:name=".plant_list.PlantListActivity" />
-        <activity android:name="com.example.androidclass.plant_home.HomeActivity">
+        <activity android:name=".plant_home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

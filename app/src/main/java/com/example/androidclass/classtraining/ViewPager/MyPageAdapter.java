@@ -1,4 +1,4 @@
-package ViewPager;
+package com.example.androidclass.classtraining.ViewPager;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

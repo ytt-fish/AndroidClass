@@ -1,5 +1,9 @@
 package com.example.androidclass.plant_record;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class PlantRecordBean {
     private int id;
     private String content;
@@ -7,6 +11,12 @@ public class PlantRecordBean {
 
     public PlantRecordBean(){
 
+    }
+
+    public PlantRecordBean(Integer id,String content,String time){
+        this.id=id;
+        this.content=content;
+        this.time=time;
     }
 
     public PlantRecordBean(String content,String time){
@@ -31,10 +41,14 @@ public class PlantRecordBean {
     }
 
     public String getTime() {
-        return time;
+        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return dateFormat.format(new Date());
+
     }
 
     public void setTime(String time) {
         this.time = time;
     }
+
+
 }

@@ -40,8 +40,9 @@ public class PlantDesActivity extends AppCompatActivity {
 
     public void onClick_back(View view) {
         if(view.getId()==R.id.plant_des_back){
-            Intent intent=new Intent(this, PlantListActivity.class);
-            startActivity(intent);
+//            Intent intent=new Intent(this, PlantListActivity.class);
+//            startActivity(intent);
+            finish();
         }
     }
 }

@@ -41,8 +41,7 @@ public class PlantGridDesActivity extends AppCompatActivity {
 
     public void onClick_back(View view) {
         if(view.getId()==R.id.plant_grid_des_back){
-            Intent intent1=new Intent(this, PlantGridActivity.class);
-            startActivity(intent1);
+            finish();
         }
     }
 }

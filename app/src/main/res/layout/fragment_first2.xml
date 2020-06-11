@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ViewPager.FirstFragment">
+    tools:context=".classtraining.ViewPager.FirstFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

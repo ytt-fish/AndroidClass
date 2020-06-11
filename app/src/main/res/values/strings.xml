@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidClass</string>
+    <string name="app_name">植物说</string>
     <string name="from">from</string>
     <string name="btn">转换为华氏温度</string>
     <string name="newT">结果为：</string>
@@ -41,6 +41,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="record_title">养护记录</string>
-    <string name="record_btn_add">增加</string>
+    <string name="record_title" translatable="false">养护记录</string>
+    <string name="record_btn_add" translatable="false">增加</string>
+    <string name="record_name" translatable="false">养护记录</string>
 </resources>

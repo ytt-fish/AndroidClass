@@ -1,4 +1,4 @@
-package ViewPager;
+package com.example.androidclass.classtraining.ViewPager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
