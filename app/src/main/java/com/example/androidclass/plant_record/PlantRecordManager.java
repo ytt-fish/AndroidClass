@@ -52,10 +52,22 @@ public class PlantRecordManager {
         return false;
     }
 
-    public List<PlantRecordBean> query(){
+    public boolean update(PlantRecordBean bean){
+        SQLiteDatabase db=plantDBHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("curcontent", bean.getContent());
+        values.put("curtime", bean.getTime());
+        int result =db.update(PRNAME, values,"id=?",new String[]{bean.getId()+""});
+        if (result > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public List<PlantRecordBean> showAll(){
         List<PlantRecordBean> plantRecord=null;
         SQLiteDatabase db=plantDBHelper.getReadableDatabase();
-        Cursor cursor=db.query("PRNAME",null,null,null,null,null,null);
+        Cursor cursor=db.query(PRNAME,null,null,null,null,null,null);
         if(cursor!=null){
             //实列化，分配空间
             plantRecord = new ArrayList<PlantRecordBean>();

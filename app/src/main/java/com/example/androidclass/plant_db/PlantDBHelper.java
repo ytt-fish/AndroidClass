@@ -24,6 +24,7 @@ public class PlantDBHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+PB_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,CURTITLE TEXT,CURURL TEXT)");
         db.execSQL("CREATE TABLE "+PR_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,CURCONTENT TEXT,CURTIME TEXT)");
+
     }
 
     @Override

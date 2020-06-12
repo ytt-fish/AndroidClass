@@ -20,8 +20,8 @@ public class PlantManager {
     public void add(PlantItem item){
         SQLiteDatabase db=plantDBHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
-        values.put("curname",item.getCurTitle());
-        values.put("currate",item.getCurUrl());
+        values.put("curtitle",item.getCurTitle());
+        values.put("cururl",item.getCurUrl());
         db.insert(PBNAME,null,values);
         db.close();
     }

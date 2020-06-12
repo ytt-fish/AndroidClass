@@ -1,6 +1,7 @@
 package com.example.androidclass.plant_db;
 
 public class PlantItem {
+
     private int id;
     private String curTitle;
     private String curUrl;
@@ -34,8 +35,8 @@ public class PlantItem {
     public String getCurUrl() {
         return curUrl;
     }
-
     public void setCurUrl(String curUrl) {
         this.curUrl = curUrl;
     }
+
 }

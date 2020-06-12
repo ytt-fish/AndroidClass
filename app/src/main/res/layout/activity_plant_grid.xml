@@ -12,10 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="@color/design_default_color_secondary_variant">
+
         <TextView
             android:id="@+id/plant_grid_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="常见植物介绍"
             android:textColor="@color/design_default_color_background"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -25,7 +30,8 @@
         android:id="@+id/plant_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@mipmap/background3"
         android:columnWidth="100dp"
-        android:numColumns="2"/>
+        android:numColumns="2" />
 
 </LinearLayout>

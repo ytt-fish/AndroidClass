@@ -21,11 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlantRecordActivity extends AppCompatActivity implements AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener {
-    private ListView listView;
-    private PlantAdapter adapter;
+    private ListView listView=null;
+    PlantAdapter adapter=null;
     private String TAG="PlantRecordActivity";
-    private List<PlantRecordBean> data;
-    private PlantRecordManager plantRecordManager;
+    private List<PlantRecordBean> data=new ArrayList<>();
+    PlantRecordManager plantRecordManager=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +35,17 @@ public class PlantRecordActivity extends AppCompatActivity implements AdapterVie
         listView=findViewById(R.id.record_listview);
 
         plantRecordManager=new PlantRecordManager(this);
-
-        this.data=plantRecordManager.query();
-
+        data=plantRecordManager.showAll();
         adapter=new PlantAdapter(this,R.layout.plantrecord_item_lv,data);
         listView.setAdapter(adapter);
+
+//        Log.i(TAG,"更新数据");
+//        data.clear();
+//        data.addAll(plantRecordManager.query());
+//        Toast.makeText(this,"欢迎",Toast.LENGTH_LONG).show();
+//        Log.i(TAG,"获取到的数据："+this.data.size());
+//        adapter.notifyDataSetChanged();
+
 
         listView.setOnItemClickListener(this);
         listView.setOnItemLongClickListener(this);
@@ -57,11 +63,11 @@ public class PlantRecordActivity extends AppCompatActivity implements AdapterVie
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1){
+        if(requestCode==1&&resultCode==2){
             Log.i(TAG,"更新数据");
             this.data.clear();
-            this.data.addAll(plantRecordManager.query());
-            //Toast.makeText(this,"aa",Toast.LENGTH_LONG).show();
+            this.data.addAll(plantRecordManager.showAll());
+            //Toast.makeText(this,"欢迎",Toast.LENGTH_LONG).show();
             Log.i(TAG,"获取到的数据："+this.data.size());
             adapter.notifyDataSetChanged();
         }
@@ -89,9 +95,7 @@ public class PlantRecordActivity extends AppCompatActivity implements AdapterVie
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         PlantRecordBean bean=data.get(position);
         Intent update=new Intent(this,PlantRecordAddActivity.class);
-        update.putExtra("data", (Serializable) bean);
+        update.putExtra("data", bean);
         startActivityForResult(update,2);
-
-
     }
 }

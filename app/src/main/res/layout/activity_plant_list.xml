@@ -47,7 +47,6 @@
             android:layout_toStartOf="@+id/plant_list_search"
             android:layout_toLeftOf="@+id/plant_list_search"
             android:textColor="@color/design_default_color_background"
-
             android:autofillHints="@string/search" />
     </RelativeLayout>
 
