@@ -37,12 +37,10 @@
     <string name="home_btn2" translatable="false">科学知识</string>
     <string name="home_btn3" translatable="false">养护记录</string>
     <string name="plant_des_back" translatable="false">返回</string>
-    <string name="plant_menu_grid" translatable="false">网格视图</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="plant_menu_grid" translatable="false">GridView视图</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="record_title" translatable="false">养护记录</string>
     <string name="record_btn_add" translatable="false">增加</string>
     <string name="record_name" translatable="false">养护记录</string>
-    <string name="home_btn22" translatable="false">养护常识</string>
+    <string name="home_btn22">养护常识</string>
 </resources>

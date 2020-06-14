@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">植物说</string>
+    <string name="app_name">AndroidClass</string>
     <string name="hb" translatable="false">生日快乐</string>
     <string name="from" translatable="false">来自</string>
     <string name="btn">转换为华氏温度</string>

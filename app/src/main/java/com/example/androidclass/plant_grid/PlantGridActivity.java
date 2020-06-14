@@ -21,8 +21,8 @@ import java.util.List;
 public class PlantGridActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     GridView gridView;
     String TAG="PlantGridActivity";
-    String[] plantN1 = new String[] {"蓝雪花", "长寿花","风车茉莉","玛格丽特花","月季花","栀子花","杜鹃","桂花"};
-    String[] plantD1 = new String[] {"白花丹科","石蒜科","夹竹桃科","菊科","蔷薇科","茜草科","杜鹃花科","木犀科"};
+    String[] plantN1 = new String[] {"蓝雪花", "长寿花","风车茉莉","玛格丽特","月季花","栀子花","酢浆草","凌霄"};
+    String[] plantD1 = new String[] {"白花丹科","石蒜科","夹竹桃科","菊科","蔷薇科","茜草科","酢浆草科","紫葳科"};
     private List<HashMap<String,String>> listItems1;//存放文字，图片信息
     private SimpleAdapter listItemAdapter;//适配器
 

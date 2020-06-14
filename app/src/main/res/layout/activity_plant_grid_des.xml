@@ -36,14 +36,35 @@
 
         </RelativeLayout>
         <TextView
-            android:id="@+id/plant_grid_description"
+            android:id="@+id/plant_sun1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/plant_flower1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/plant_tem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:gravity="center"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/plant_url1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textStyle="normal"
-            android:text="@string/search"
-            android:textSize="20sp"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp"
+            android:background="@android:color/holo_green_light" />
 
     </LinearLayout>
 </ScrollView>

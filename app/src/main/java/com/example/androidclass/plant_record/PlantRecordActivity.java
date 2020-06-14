@@ -46,7 +46,6 @@ public class PlantRecordActivity extends AppCompatActivity implements AdapterVie
 //        Log.i(TAG,"获取到的数据："+this.data.size());
 //        adapter.notifyDataSetChanged();
 
-
         listView.setOnItemClickListener(this);
         listView.setOnItemLongClickListener(this);
 

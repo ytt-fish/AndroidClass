@@ -71,7 +71,7 @@ public class PlantRecordAddActivity extends AppCompatActivity {
                     return;
                 }
 
-                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 String time=format.format(new Date());
 
                 boolean result=false;

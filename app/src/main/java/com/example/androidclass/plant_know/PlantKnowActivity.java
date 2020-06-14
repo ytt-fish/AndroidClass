@@ -87,14 +87,14 @@ public class PlantKnowActivity extends ListActivity implements Runnable, Adapter
             Document doc = null;
             try {
                 List<PlantItem> plList=new ArrayList<PlantItem>();
-                doc = Jsoup.connect("https://www.zhiwutong.com/science/index.htm").get();
+                doc = Jsoup.connect("https://www.zhiwutong.com/yanghua/index.htm").get();
                 Elements tables = doc.getElementsByTag("li");
                 //int i=1;
 //            for(Element table:tables) {
 //                //Log.i(TAG, "run:table["+i+"]" + table);
 //                i++;
 //            }
-                for (int j = 35; j < 85; j++) {
+                for (int j = 49; j < 85; j++) {
                     Element want = tables.get(j);
                     Log.i(TAG, "run:table[" + j + "]" + want);
 
