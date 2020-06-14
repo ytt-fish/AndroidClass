@@ -51,11 +51,11 @@ public class PlantDesActivity extends AppCompatActivity implements AdapterView.O
         plantTitle=findViewById(R.id.plant_des_title);
         plantTitle.setText(name);
         plantSun=findViewById(R.id.plant_sun);
-        plantSun.setText("光照："+sun[position1]);
+        plantSun.setText("光照: "+sun[position1]);
         plantFlower=findViewById(R.id.plant_flower);
-        plantFlower.setText("花期："+flower[position1]);
+        plantFlower.setText("花期: "+flower[position1]);
         plantTem=findViewById(R.id.plant_tem);
-        plantTem.setText("适宜温度"+Tem[position1]);
+        plantTem.setText("适宜温度: "+Tem[position1]);
 
         ListView listView = findViewById(R.id.plant_url);
         ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, put);

@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".plant_record.PlantRecordAddActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".plant_record.PlantRecordActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".plant_record.PlantRecordAddActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".plant_record.PlantRecordActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".plant_know.PlantKnowActivity" />
-        <activity android:name=".plant_des.PlantGridDesActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".plant_grid.PlantGridActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".plant_des.PlantDesActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".plant_list.PlantListActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".plant_des.PlantGridDesActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".plant_grid.PlantGridActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".plant_des.PlantDesActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".plant_list.PlantListActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".plant_home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

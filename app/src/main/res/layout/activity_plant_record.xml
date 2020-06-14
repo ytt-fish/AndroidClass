@@ -10,6 +10,7 @@
         android:id="@+id/record_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         android:divider="@color/design_default_color_on_secondary"
         android:dividerHeight="2dp" />
 
@@ -20,8 +21,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="@string/record_btn_add"
-        android:onClick="record_add"/>
+        android:background="@color/colorAccent"
+        android:onClick="record_add"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="@string/record_btn_add" />
 
 
 </RelativeLayout>

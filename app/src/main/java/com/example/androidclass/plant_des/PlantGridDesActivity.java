@@ -49,11 +49,11 @@ public class PlantGridDesActivity extends AppCompatActivity implements AdapterVi
         plantTitleG=findViewById(R.id.plant_grid_des_title);
         plantTitleG.setText(name1);
         plantSunG=findViewById(R.id.plant_sun1);
-        plantSunG.setText("光照："+sunG[position1]);
+        plantSunG.setText("光照: "+sunG[position1]);
         plantFlowerG=findViewById(R.id.plant_flower1);
-        plantFlowerG.setText("花期："+flowerG[position1]);
+        plantFlowerG.setText("花期: "+flowerG[position1]);
         plantTemG=findViewById(R.id.plant_tem1);
-        plantTemG.setText("适宜温度"+TemG[position1]);
+        plantTemG.setText("适宜温度: "+TemG[position1]);
 
         ListView listView = findViewById(R.id.plant_url1);
         ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, put1);

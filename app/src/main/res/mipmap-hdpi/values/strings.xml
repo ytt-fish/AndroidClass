@@ -34,7 +34,7 @@
     <string name="result" translatable="false">搜索结果</string>
     <string name="search" translatable="false">search</string>
     <string name="home_btn1" translatable="false">常见植物介绍</string>
-    <string name="home_btn2" translatable="false">科学知识</string>
+    <string name="home_btn2" translatable="false">养护知识</string>
     <string name="home_btn3" translatable="false">养护记录</string>
     <string name="plant_des_back" translatable="false">返回</string>
     <string name="plant_menu_grid" translatable="false">GridView视图</string>
